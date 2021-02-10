@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "playerlizzer"
+  "defaultProject": "playerlizzer",
+  "cli": {
+    "analytics": "4e774aee-206a-40f5-a25a-3a9d30ebf1da"
+  }
 }

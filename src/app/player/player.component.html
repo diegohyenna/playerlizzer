@@ -1,0 +1,34 @@
+<div class="content" role="main">
+  <h1>HELLO WORLD</h1>
+  <p>
+    <i-feather
+      name="play"
+      class="big fill-green"
+      (click)="onPlay()"
+    ></i-feather>
+    <i-feather
+      name="pause"
+      class="big fill-green"
+      (click)="onPause()"
+    ></i-feather>
+    <i-feather
+      name="chevrons-left"
+      class="big fill-red"
+      (click)="onPrev()"
+    ></i-feather>
+    <i-feather
+      name="chevrons-right"
+      class="big fill-red"
+      (click)="onNext()"
+    ></i-feather>
+  </p>
+
+  <input
+    type="range"
+    id="range"
+    value="{{ this.range }}"
+    step="1"
+    max="{{ this.maxRange }}"
+    (click)="this.changedRange($event)"
+  />
+</div>
