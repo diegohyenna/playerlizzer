@@ -14,6 +14,10 @@ export class PlayerComponent implements OnInit {
 
   public rangePointer = 0;
   public maxRange = 0;
+  public display = {
+    current: '00:00',
+    totalDuration: '00:00',
+  };
 
   public player = document.createElement('audio');
 
@@ -35,8 +39,11 @@ export class PlayerComponent implements OnInit {
 
     this.player.addEventListener('timeupdate', (plr: any) => {
       plr.stopPropagation();
+
       if (!this.rangeBlock) {
         this.rangePointer = this.player.currentTime;
+
+        this.displayDraw();
       }
     });
 
@@ -54,12 +61,13 @@ export class PlayerComponent implements OnInit {
     if (this.played) {
       this.onPlay();
     }
+    this.displayDraw();
   };
 
   public onPlay = () => {
-    this.player.play();
     this.played = true;
     this.maxRange = this.player.duration;
+    this.player.play();
   };
 
   public onPause = () => {
@@ -86,5 +94,37 @@ export class PlayerComponent implements OnInit {
   public changedRange = (evt: any) => {
     this.rangePointer = evt.target.value;
     this.player.currentTime = this.rangePointer;
+    this.displayDraw();
+  };
+
+  private displayDraw = () => {
+    let seekPosition = this.player.currentTime * (100 / this.player.duration);
+    let value = seekPosition;
+
+    // Calculate the time left and the total duration
+    let currentMinutes: any = Math.floor(seekPosition / 60);
+    let currentSeconds: any = Math.floor(seekPosition - currentMinutes * 60);
+    let durationMinutes: any = Math.floor(this.player.duration / 60);
+    let durationSeconds: any = Math.floor(
+      this.player.duration - durationMinutes * 60
+    );
+
+    // Add a zero to the single digit time values
+    if (currentSeconds < 10) {
+      currentSeconds = '0' + currentSeconds;
+    }
+    if (durationSeconds < 10) {
+      durationSeconds = '0' + durationSeconds;
+    }
+    if (currentMinutes < 10) {
+      currentMinutes = '0' + currentMinutes;
+    }
+    if (durationMinutes < 10) {
+      durationMinutes = '0' + durationMinutes;
+    }
+
+    // Display the updated duration
+    this.display.current = currentMinutes + ':' + currentSeconds;
+    this.display.totalDuration = durationMinutes + ':' + durationSeconds;
   };
 }

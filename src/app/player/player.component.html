@@ -22,13 +22,15 @@
       (click)="onNext()"
     ></i-feather>
   </p>
-
-  <input
-    type="range"
-    id="range"
-    value="{{ this.rangePointer }}"
-    step="1"
-    max="{{ this.maxRange }}"
-    (click)="this.changedRange($event)"
-  />
+  <div>
+    <input
+      type="range"
+      id="range"
+      value="{{ this.rangePointer }}"
+      step="any"
+      max="{{ this.maxRange }}"
+      (click)="this.changedRange($event)"
+    />
+    <span>{{ this.display.current }} / {{ this.display.totalDuration }}</span>
+  </div>
 </div>
