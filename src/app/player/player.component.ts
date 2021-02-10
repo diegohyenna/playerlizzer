@@ -5,7 +5,18 @@ import { Component, OnChanges, OnInit } from '@angular/core';
   templateUrl: './player.component.html',
   styleUrls: ['./player.component.sass'],
 })
-export class PlayerComponent implements OnInit, OnChanges {
+export class PlayerComponent implements OnInit {
+  private track = 0;
+  private path = '../assets/musics/';
+  private range: any;
+  private rangeBlock = false;
+  private played = false;
+
+  public rangePointer = 0;
+  public maxRange = 0;
+
+  public player = document.createElement('audio');
+
   private musics = [
     {
       title: 'Alok, Bruno Martini, feat. Zeeba - Hear Me Now',
@@ -15,34 +26,7 @@ export class PlayerComponent implements OnInit, OnChanges {
       title: "Bruno Mars - That's What I Like",
       src: 'bruno-mars_thats-what-i-like.mp3',
     },
-    // {
-    //   title: "Alok, Bruno Martini, feat. Zeeba Hear Me Now",
-    //   src: "alok-bruno-martini-feat-zeeba_hear-me-now.mp3"
-    // },
-    // {
-    //   title: "Alok, Bruno Martini, feat. Zeeba Hear Me Now",
-    //   src: "alok-bruno-martini-feat-zeeba_hear-me-now.mp3"
-    // },
-    // {
-    //   title: "Alok, Bruno Martini, feat. Zeeba Hear Me Now",
-    //   src: "alok-bruno-martini-feat-zeeba_hear-me-now.mp3"
-    // },
-    // {
-    //   title: "Alok, Bruno Martini, feat. Zeeba Hear Me Now",
-    //   src: "alok-bruno-martini-feat-zeeba_hear-me-now.mp3"
-    // },
-    // {
-    //   title: "Alok, Bruno Martini, feat. Zeeba Hear Me Now",
-    //   src: "alok-bruno-martini-feat-zeeba_hear-me-now.mp3"
-    // },
   ];
-
-  private track = 0;
-  private path = '../assets/musics/';
-  public range = 0;
-  public rge: any;
-  public maxRange = 0;
-  public player = document.createElement('audio');
 
   constructor() {}
 
@@ -50,33 +34,37 @@ export class PlayerComponent implements OnInit, OnChanges {
     this.player.src = this.path + this.musics[this.track].src;
 
     this.player.addEventListener('timeupdate', (plr: any) => {
-      this.range = this.player.currentTime;
+      plr.stopPropagation();
+      if (!this.rangeBlock) {
+        this.rangePointer = this.player.currentTime;
+      }
     });
 
-    this.rge = document.getElementById('range');
-    this.rge.addEventListener('mousedown', (el: any) => {
-      //   this.range = el.target.value;
-      //   this.player.currentTime = el.target.value;
-
-      this.player.removeEventListener;
+    this.range = document.getElementById('range');
+    this.range.addEventListener('mousedown', () => {
+      this.rangeBlock = true;
     });
-  }
-
-  ngDoCheck() {
-    // this.range = this.player.currentTime;
+    this.range.addEventListener('mouseup', () => {
+      this.rangeBlock = false;
+    });
   }
 
   private changeTrack = () => {
     this.player.src = this.path + this.musics[this.track].src;
+    if (this.played) {
+      this.onPlay();
+    }
   };
 
   public onPlay = () => {
     this.player.play();
+    this.played = true;
     this.maxRange = this.player.duration;
   };
 
   public onPause = () => {
     this.player.pause();
+    this.played = false;
   };
 
   public onNext = () => {
@@ -96,6 +84,7 @@ export class PlayerComponent implements OnInit, OnChanges {
   };
 
   public changedRange = (evt: any) => {
-    this.player.currentTime = evt.target.value;
+    this.rangePointer = evt.target.value;
+    this.player.currentTime = this.rangePointer;
   };
 }
