@@ -1,34 +1,64 @@
-<div class="content" role="main">
-  <h1>HELLO WORLD</h1>
-  <p>
-    <i-feather
-      name="play"
-      class="big fill-green"
-      (click)="onPlay()"
-    ></i-feather>
-    <i-feather
-      name="pause"
-      class="big fill-green"
-      (click)="onPause()"
-    ></i-feather>
-    <i-feather
-      name="chevrons-left"
-      class="big fill-red"
-      (click)="onPrev()"
-    ></i-feather>
-    <i-feather
-      name="chevrons-right"
-      class="big fill-red"
-      (click)="onNext()"
-    ></i-feather>
-  </p>
-
-  <input
-    type="range"
-    id="range"
-    value="{{ this.rangePointer }}"
-    step="1"
-    max="{{ this.maxRange }}"
-    (click)="this.changedRange($event)"
-  />
+<div class="player" role="main">
+  <div class="title mb-3">
+    <h1>PLAYERLIZZER</h1>
+  </div>
+  <div class="disco mb-3" [ngClass]="this.getPlayed() ? 'animate' : ''"></div>
+  <div class="controls mb-3">
+    <div class="ctrl-secondary left">
+      <i-feather
+        name="chevrons-left"
+        (click)="onPrev()"
+        class="desactive"
+        title="Voltar para música anterior"
+      ></i-feather>
+    </div>
+    <div class="ctrl-primary">
+      <i-feather
+        name="play"
+        (click)="onPlay()"
+        class="desactive"
+        [ngClass]="this.getPlayed() ? 'active' : 'desactive'"
+        *ngIf="!this.getPlayed()"
+        title="Tocar a música"
+      ></i-feather>
+      <i-feather
+        name="pause"
+        (click)="onPause()"
+        class="desactive"
+        [ngClass]="!this.getPlayed() ? 'active' : 'desactive'"
+        title="Pausar a música"
+        *ngIf="this.getPlayed()"
+      ></i-feather>
+      <i-feather
+        name="refresh-ccw"
+        [ngClass]="!getRefresh() ? 'desactive' : 'active'"
+        (click)="onRefresh()"
+        title="Mudar de faixa automaticamente"
+      ></i-feather>
+    </div>
+    <div class="ctrl-secondary right">
+      <i-feather
+        name="chevrons-right"
+        (click)="onNext()"
+        class="desactive"
+        title="Ir para próxima música"
+      ></i-feather>
+    </div>
+  </div>
+  <div class="track">
+    <div class="track-name mb-1">
+      <h5>{{ this.getTitle() }}</h5>
+    </div>
+    <div class="range">
+      <input
+        type="range"
+        id="range"
+        value="{{ this.rangePointer }}"
+        step="1"
+        max="{{ this.maxRange }}"
+        (click)="this.changedRange($event)"
+      />
+      <h6>{{ this.display.current }} / {{ this.display.totalDuration }}</h6>
+    </div>
+  </div>
 </div>

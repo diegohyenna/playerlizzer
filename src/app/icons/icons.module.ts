@@ -6,6 +6,11 @@ import {
   Pause,
   ChevronsRight,
   ChevronsLeft,
+  Volume,
+  Volume1,
+  Volume2,
+  VolumeX,
+  RefreshCcw,
 } from 'angular-feather/icons';
 
 const icons = {
@@ -13,6 +18,11 @@ const icons = {
   Pause,
   ChevronsRight,
   ChevronsLeft,
+  Volume,
+  Volume1,
+  Volume2,
+  VolumeX,
+  RefreshCcw,
 };
 
 @NgModule({
