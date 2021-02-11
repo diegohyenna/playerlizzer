@@ -1,16 +1,22 @@
 # Playerlizzer
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.3.
+Um player de músicas para o meu portifólio e também treino de conhecimentos!
+Esse projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) versão 11.0.3.
 
-## Development server
+## Tecnologias usadas
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- [Feather Icons](https://feathericons.com/)
+- [Angular](https://angular.io/)
 
-## Code scaffolding
+## Rodando localmente
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Roda na pasta raiz do projeto, `npm install` e após terminar os downloads, rode `ng serve`. Navigue com o browser para `http://localhost:4200/`.
 
-## Build
+## Feito Por
+
+[DiegoHyenna](https://dgsite.web.app)
+
+<!-- ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
@@ -20,8 +26,4 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 ## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/). -->
