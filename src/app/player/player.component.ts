@@ -12,7 +12,10 @@ export class PlayerComponent implements OnInit {
   private rangeBlock = false;
   private played = false;
   private refresh = false;
-  private title = '';
+  private trackInfo = {
+    title: '',
+    artist: '',
+  };
 
   public rangePointer = 0;
   public maxRange = 0;
@@ -25,35 +28,48 @@ export class PlayerComponent implements OnInit {
 
   private musics = [
     {
-      title: 'Alok, Bruno Martini, feat. Zeeba - Hear Me Now',
+      title: 'Take On Me',
+      artist: 'A-Ha',
+      src: 'a-ha_take-on-me.mp3',
+    },
+    {
+      title: 'Hear Me Now',
+      artist: 'Alok, Bruno Martini, feat. Zeeba',
       src: 'alok-bruno-martini-feat-zeeba_hear-me-now.mp3',
     },
     {
-      title: "Bruno Mars - That's What I Like",
+      title: "That's What I Like",
+      artist: 'Bruno Mars',
       src: 'bruno-mars_thats-what-i-like.mp3',
     },
     {
-      title: 'Charlie Brown - Como Tudo Deve Ser',
+      title: 'Como Tudo Deve Ser',
+      artist: 'Charlie Brown',
       src: 'charlie-brown-jr_como-tudo-deve-ser.mp3',
     },
     {
-      title: 'Felix Jaehn Hight Alex Aiono - Hot2Touch',
+      title: 'Hot2Touch',
+      artist: 'Felix Jaehn Hight, Alex Aiono',
       src: 'felix-jaehn-hight-alex-aiono_hot2touch.mp3',
     },
     {
-      title: 'Kiss - I Was Made For Lovin You',
+      title: 'I Was Made For Lovin You',
+      artist: 'Kiss',
       src: 'kiss_i-was-made-for-lovin-you.mp3',
     },
     {
-      title: 'Leonardo Gonçalves - Eu Me Rendo',
+      title: 'Eu Me Rendo',
+      artist: 'Leonardo Gonçalves',
       src: 'leonardo-goncalves_eu-me-rendo.mp3',
     },
     {
-      title: 'Leonardo Gonçalves - Getsemani',
+      title: 'Getsemani',
+      artist: 'Leonardo Gonçalves',
       src: 'leonardo-goncalves_getsemani.mp3',
     },
     {
-      title: 'The Black Eyed Peas - I Gotta Feeling',
+      title: 'I Gotta Feeling',
+      artist: 'The Black Eyed Peas',
       src: 'the-black-eyed-peas_i-gotta-feeling.mp3',
     },
   ];
@@ -62,7 +78,10 @@ export class PlayerComponent implements OnInit {
 
   ngOnInit(): void {
     this.player.src = this.path + this.musics[this.track].src;
-    this.setTitle(this.musics[this.track].title);
+    this.setTrackInfo(
+      this.musics[this.track].title,
+      this.musics[this.track].artist
+    );
 
     this.player.addEventListener('timeupdate', (plr: any) => {
       plr.stopPropagation();
@@ -92,7 +111,10 @@ export class PlayerComponent implements OnInit {
   private changeTrack = () => {
     this.rangePointer = 0;
     this.player.src = this.path + this.musics[this.track].src;
-    this.setTitle(this.musics[this.track].title);
+    this.setTrackInfo(
+      this.musics[this.track].title,
+      this.musics[this.track].artist
+    );
     if (this.played) {
       setTimeout(() => {
         this.onPlay();
@@ -136,16 +158,17 @@ export class PlayerComponent implements OnInit {
     return this.refresh;
   };
 
-  public getTitle = () => {
-    return this.title;
+  public getTrackInfo = () => {
+    return `<strong>${this.trackInfo.artist}</strong> - ${this.trackInfo.title}`;
   };
 
   public getPlayed = () => {
     return this.played;
   };
 
-  private setTitle = (title: string) => {
-    this.title = title;
+  private setTrackInfo = (title: string, artist: string) => {
+    this.trackInfo.title = title;
+    this.trackInfo.artist = artist;
   };
 
   public changedRange = (evt: any) => {
