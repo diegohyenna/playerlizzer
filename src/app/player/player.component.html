@@ -47,7 +47,7 @@
   </div>
   <div class="track">
     <div class="track-name pb-2 mb-2">
-      <h5>{{ this.getTitle() }}</h5>
+      <h5 [innerHTML]="this.getTrackInfo()"></h5>
     </div>
     <div class="range">
       <input
