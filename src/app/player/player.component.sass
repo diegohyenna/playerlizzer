@@ -125,9 +125,20 @@ h6
 
         &.left
             text-align: right
+.track
 
-.range
-    display: flex
+    @media all and (max-width: 480px)
+        .track-name
+            height: 2rem
+        .mb-2
+            margin-bottom: 1rem
 
-    & > *
-        padding: 0 4px
+    .track-name
+        height: 2.2rem
+
+    .range
+        display: flex
+        justify-content: center
+
+        & > *
+            padding: 0 4px

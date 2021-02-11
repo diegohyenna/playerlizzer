@@ -25,6 +25,10 @@ export class PlayerComponent implements OnInit {
 
   private musics = [
     {
+      title: 'A-Ha - Take On Me',
+      src: 'a-ha_take-on-me.mp3',
+    },
+    {
       title: 'Alok, Bruno Martini, feat. Zeeba - Hear Me Now',
       src: 'alok-bruno-martini-feat-zeeba_hear-me-now.mp3',
     },
