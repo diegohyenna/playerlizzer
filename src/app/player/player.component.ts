@@ -73,6 +73,11 @@ export class PlayerComponent implements OnInit {
       artist: 'The Black Eyed Peas',
       src: 'the-black-eyed-peas_i-gotta-feeling.mp3',
     },
+    {
+      title: "Mother's Daughter",
+      artist: 'Miley Cyrus',
+      src: 'miley-cyrus_mothers-daughter.mp3',
+    },
   ];
 
   constructor() {}
