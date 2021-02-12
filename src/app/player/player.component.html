@@ -74,9 +74,9 @@
         max="{{ this.maxRange }}"
         (change)="this.changedRange($event)"
       />
+      <h6>{{ this.display.current }} / {{ this.display.totalDuration }}</h6>
       <h6>
-        {{ this.display.current }} / {{ this.display.totalDuration }} -
-        {{ this.getTrack() + 1 + "/" + this.getMusicsTotal() }}
+        <strong>{{ this.getTrack() + 1 + "/" + this.getMusicsTotal() }}</strong>
       </h6>
     </div>
   </div>

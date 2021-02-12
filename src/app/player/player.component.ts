@@ -29,6 +29,11 @@ export class PlayerComponent implements OnInit {
 
   private musics = [
     {
+      title: 'Shake It Off',
+      artist: 'Taylor Swift',
+      src: 'taylor-swift_shake-it-off.mp3',
+    },
+    {
       title: 'Take On Me',
       artist: 'A-Ha',
       src: 'a-ha_take-on-me.mp3',
@@ -77,6 +82,11 @@ export class PlayerComponent implements OnInit {
       title: 'Where Is The Love',
       artist: 'The Black Eyed Peas',
       src: 'the-black-eyed-peas_where-is-the-love.mp3',
+    },
+    {
+      title: 'Maniac',
+      artist: 'Avantasia',
+      src: 'avantasia_maniac.mp3',
     },
   ];
 
