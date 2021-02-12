@@ -17,7 +17,7 @@ export class PlayerComponent implements OnInit {
     artist: '',
   };
 
-  public start = false;
+  public start = true;
   public rangePointer = 0;
   public maxRange = 0;
   public display = {
@@ -73,6 +73,11 @@ export class PlayerComponent implements OnInit {
       artist: 'The Black Eyed Peas',
       src: 'the-black-eyed-peas_i-gotta-feeling.mp3',
     },
+    {
+      title: 'Where Is The Love',
+      artist: 'The Black Eyed Peas',
+      src: 'the-black-eyed-peas_where-is-the-love.mp3',
+    },
   ];
 
   constructor() {}
@@ -99,6 +104,12 @@ export class PlayerComponent implements OnInit {
       this.rangeBlock = true;
     });
     this.range.addEventListener('mouseup', () => {
+      this.rangeBlock = false;
+    });
+    this.range.addEventListener('touchstart', () => {
+      this.rangeBlock = true;
+    });
+    this.range.addEventListener('touchend', () => {
       this.rangeBlock = false;
     });
   }
@@ -169,6 +180,14 @@ export class PlayerComponent implements OnInit {
 
   public getPlayed = () => {
     return this.played;
+  };
+
+  public getTrack = () => {
+    return this.track;
+  };
+
+  public getMusicsTotal = () => {
+    return this.musics.length;
   };
 
   public getStart = () => {

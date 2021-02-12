@@ -12,6 +12,10 @@ Esse projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli
 
 Roda na pasta raiz do projeto, `npm install` e após terminar os downloads, rode `ng serve`. Navigue com o browser para `http://localhost:4200/`.
 
+## Demonstração
+
+https://playerlizzer.web.app
+
 ## Feito Por
 
 [DiegoHyenna](https://dgsite.web.app)

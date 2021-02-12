@@ -72,9 +72,12 @@
         value="{{ this.rangePointer }}"
         step="1"
         max="{{ this.maxRange }}"
-        (click)="this.changedRange($event)"
+        (change)="this.changedRange($event)"
       />
-      <h6>{{ this.display.current }} / {{ this.display.totalDuration }}</h6>
+      <h6>
+        {{ this.display.current }} / {{ this.display.totalDuration }} -
+        {{ this.getTrack() + 1 + "/" + this.getMusicsTotal() }}
+      </h6>
     </div>
   </div>
 </div>
