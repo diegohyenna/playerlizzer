@@ -17,6 +17,7 @@ export class PlayerComponent implements OnInit {
     artist: '',
   };
 
+  public start = false;
   public rangePointer = 0;
   public maxRange = 0;
   public display = {
@@ -71,6 +72,11 @@ export class PlayerComponent implements OnInit {
       title: 'I Gotta Feeling',
       artist: 'The Black Eyed Peas',
       src: 'the-black-eyed-peas_i-gotta-feeling.mp3',
+    },
+    {
+      title: "Mother's Daughter",
+      artist: 'Miley Cyrus',
+      src: 'miley-cyrus_mothers-daughter.mp3',
     },
   ];
 
@@ -154,6 +160,10 @@ export class PlayerComponent implements OnInit {
     this.refresh = !this.refresh;
   };
 
+  public onStart = () => {
+    this.setStart(!this.start);
+  };
+
   public getRefresh = () => {
     return this.refresh;
   };
@@ -164,6 +174,14 @@ export class PlayerComponent implements OnInit {
 
   public getPlayed = () => {
     return this.played;
+  };
+
+  public getStart = () => {
+    return this.start;
+  };
+
+  public setStart = (start: boolean) => {
+    this.start = start;
   };
 
   private setTrackInfo = (title: string, artist: string) => {

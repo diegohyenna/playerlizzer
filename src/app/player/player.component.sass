@@ -66,14 +66,98 @@ h6
 .desactive:hover
     @extend .active
 
+.hide
+    display: none
+
 .player
+    position: fixed
+    bottom: 0
     display: flex
     flex-direction: column
     background-color: orange
-    padding: 48px
+    padding: 8px 12px
+    width: 38px
+    height: 38px
     max-width: 420px
-    min-width: 320px
     align-items: center
+
+    & > *:not(.initial-btn)
+        opacity: 0
+
+    &.show
+        transition: width ease 1s, height ease 1s 1s, padding ease 1s 1.5s
+        width: 100%
+        height: 100%
+        padding: 48px
+
+        & > *
+            transition: all ease 2s 1s
+            opacity: 1
+    &.hide
+        transition: height ease 1s, width ease 1s 1s
+        height: 38px
+        width: 38px
+        padding: 8px 12px
+
+        & > *:not(.initial-btn)
+            opacity: 0
+
+@media (max-height: 480px)
+    .player
+        max-width: 100%
+        padding: 8px 12px
+
+        &.show
+            transition: width ease 1s, height ease 1s 1s, padding ease 1s 1.5s
+            width: 100%
+            height: 224px
+
+        &.hide
+            transition: height ease 1s, width ease 1s 1s
+            height: 38px
+            width: 38px
+
+        .track-name.pb-2.mb-2
+            padding: 0
+            margin-bottom: 0
+
+        .title.mb-3, .disco
+            display: none
+
+        .controls.mb-3
+            margin-bottom: 1rem
+
+@media (max-width: 480px)
+    .player
+        max-width: 100%
+        padding: 8px 12px
+
+        &.show
+            transition: width ease 1s, height ease 1s 1s, padding ease 1s 1.5s
+            width: 100%
+            height: 224px
+
+        &.hide
+            transition: height ease 1s, width ease 1s 1s
+            height: 38px
+            width: 38px
+
+        .track-name.pb-2.mb-2
+            padding: 0
+            margin-bottom: 0
+
+        .title.mb-3, .disco
+            display: none
+
+        .controls.mb-3
+            margin-bottom: 1rem
+
+.initial-btn
+    position: absolute
+    bottom: 4px
+    left: 6px
+    cursor: pointer
+    z-index: 9999
 
 @keyframes rounded
     from
@@ -127,17 +211,11 @@ h6
             text-align: right
 .track
 
-    @media all and (max-width: 480px)
-        .track-name
-            height: 2rem
-        .mb-2
-            margin-bottom: 1rem
-
     .track-name
         display: flex
-        align-items: baseline
+        align-items: center
         justify-content: center
-        height: 2.2rem
+        height: 4.2rem
 
     .range
         display: flex
