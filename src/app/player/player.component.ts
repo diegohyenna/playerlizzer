@@ -17,6 +17,7 @@ export class PlayerComponent implements OnInit {
     artist: '',
   };
 
+  public start = false;
   public rangePointer = 0;
   public maxRange = 0;
   public display = {
@@ -154,6 +155,10 @@ export class PlayerComponent implements OnInit {
     this.refresh = !this.refresh;
   };
 
+  public onStart = () => {
+    this.setStart(!this.start);
+  };
+
   public getRefresh = () => {
     return this.refresh;
   };
@@ -164,6 +169,14 @@ export class PlayerComponent implements OnInit {
 
   public getPlayed = () => {
     return this.played;
+  };
+
+  public getStart = () => {
+    return this.start;
+  };
+
+  public setStart = (start: boolean) => {
+    this.start = start;
   };
 
   private setTrackInfo = (title: string, artist: string) => {

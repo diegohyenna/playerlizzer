@@ -11,6 +11,8 @@ import {
   Volume2,
   VolumeX,
   RefreshCcw,
+  Music,
+  XCircle,
 } from 'angular-feather/icons';
 
 const icons = {
@@ -23,6 +25,8 @@ const icons = {
   Volume2,
   VolumeX,
   RefreshCcw,
+  Music,
+  XCircle,
 };
 
 @NgModule({
