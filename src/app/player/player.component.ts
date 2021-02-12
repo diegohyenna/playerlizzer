@@ -17,7 +17,7 @@ export class PlayerComponent implements OnInit {
     artist: '',
   };
 
-  public start = true;
+  public start = false;
   public rangePointer = 0;
   public maxRange = 0;
   public display = {
