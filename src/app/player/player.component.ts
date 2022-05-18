@@ -106,8 +106,23 @@ export class PlayerComponent implements OnInit {
   ngDoCheck() {
     if (this.player.currentTime >= this.player.duration && this.refresh) {
       this.onNext();
+    } else if (this.player.currentTime >= this.player.duration) {
+      this.initialize();
     }
   }
+
+  private initialize = () => {
+    this.track = 0;
+    this.played = false;
+    this.refresh = false;
+    this.start = false;
+    this.rangePointer = 0;
+    this.maxRange = 0;
+    this.display = {
+      current: '00:00',
+      totalDuration: '00:00',
+    };
+  };
 
   private changeTrack = () => {
     this.rangePointer = 0;
